@@ -20,3 +20,6 @@ function App() {
 }
 
 export default App
+
+// useEffect(() => {}, []) -> after comp is mounted -> loaded 
+
