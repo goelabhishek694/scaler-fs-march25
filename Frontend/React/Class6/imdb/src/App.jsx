@@ -3,16 +3,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css';
 import { Routes, Route } from "react-router";
-import MovieList from './components/MovieList';
 import Watchlist from './components/Watchlist';
 import Header from './components/Header';
+import Home from './components/Home';
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<MovieList />} />
+        <Route path="/" element={<Home />} />
         <Route path="/watchlist" element={<Watchlist />} />
       </Routes>
     </>

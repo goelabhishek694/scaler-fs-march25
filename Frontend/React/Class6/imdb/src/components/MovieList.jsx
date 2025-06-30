@@ -10,7 +10,7 @@ const MovieList = () => {
     const fetchMovies = (pageNo=1) => {
         fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=${pageNo}`)
             .then(res => res.json())
-            .then(data => setMovies(data.results))
+            .then(data => { console.log(data); setMovies(data.results)})
             .catch(() => {});
     }
 
@@ -65,7 +65,7 @@ const MovieList = () => {
                     ))
                 }
             </div>
-            <Pagination changePage={fetchMovies} />
+            <Pagination fetchMovies={fetchMovies} />
         </div>
     )
 }

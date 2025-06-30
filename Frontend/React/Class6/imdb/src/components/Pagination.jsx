@@ -1,14 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Pagination = ({ changePage }) => {
-    const [pages, setPages] = useState([1,2,3,4,5]);
+const Pagination = ({ fetchMovies }) => {
+    const [pageNo, setPageNo] = useState(1);
+    const handlePrevious =() => {
+        if(pageNo>1) setPageNo(pageNo-1);
+    }
+
+    const handleNext =() => {
+        //10000 movies , 20 movies pp , totoal pages -> 500 
+        if(pageNo<500) setPageNo(pageNo+1);
+    }
+
+    useEffect(() => {
+        fetchMovies(pageNo);
+    }, [pageNo]);
+    
     return (
-        <div className="pagination">
-            {
-                pages.map(page => (
-                    <button onClick={() => changePage(page)}>{page}</button>
-                ))
-            }
+        <div className="flex justify-center gap-3 bg-gray-400 p-4 h-[50px] w-full mt-8">
+            <div onClick={handlePrevious} className="px-8 text-xl">
+            <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <div>{pageNo}</div>
+            <div onClick={handleNext} className="px-8 text-xl">
+            <i class="fa-solid fa-arrow-right"></i>
+            </div>
         </div>
     )
 }
