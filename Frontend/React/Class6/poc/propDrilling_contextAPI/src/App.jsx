@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Family from './ContextComponents/Family'
 import { FamilyContext } from './ContextComponents/Family'
+import Test from './ContextComponents/Test'
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -25,7 +26,9 @@ function App() {
     <FamilyContext.Provider value={familyInfo}>
       <Family/>
     </FamilyContext.Provider>
+    <Test/>
     </>
+
   )
 }
 
