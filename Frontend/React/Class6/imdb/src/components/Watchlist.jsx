@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import genreids from "../utility";
+import { MovieContext } from "../context/MovieContext";
 function Watchlist() {
-  const [watchlist, setWatchlist] = useState([]);
+  const {watchlist, setWatchlist, addToWatchlist, removeFromWatchlist} = useContext(MovieContext);
   const [search,setSearch] = useState("");
   const [genreList, setGenreList] = useState([]);
   const [currGenre, setCurrGenre] = useState("All Genres");
+  
 
   const handleAscendingRatings = () => {
     console.log("sorting low to high");
@@ -90,6 +91,11 @@ function Watchlist() {
                   <div>Genre</div>
                 </div>
               </th>
+              <th>
+                <div className="flex">
+                  <div>Delete Movies</div>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
@@ -115,9 +121,11 @@ function Watchlist() {
                   <td className="pl-2 py-4">
                     {genreids[movieObj.genre_ids[0]]}
                   </td>
+                  <td><button onClick={()=>removeFromWatchlist(movieObj)} className="text-red-500">Delete</button></td>
                 </tr>
               );
             })}
+            
           </tbody>
         </table>
       </div>
