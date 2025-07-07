@@ -1,18 +1,12 @@
-import { useContext, useEffect } from "react";
-import { useState } from "react";
+import { useContext } from "react";
 import Movie from "./Movie";
 import Pagination from "./Pagination";
 import { MovieContext } from "../context/MovieContext";
+import {useSelector } from "react-redux";
 
 const MovieList = () => {
-    const [movies, setMovies] = useState([]);
+    const {movies, error, loading} = useSelector((store) => store.movieState);
     const {watchlist, setWatchlist, addToWatchlist, removeFromWatchlist} = useContext(MovieContext);
-    const fetchMovies = (pageNo=1) => {
-        fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=${pageNo}`)
-            .then(res => res.json())
-            .then(data => { console.log(data); setMovies(data.results)})
-            .catch(() => {});
-    }
 
     const doesContain = (movie) => {
         for(let i=0;i<watchlist.length;i++){
@@ -20,10 +14,6 @@ const MovieList = () => {
         }
         return false;
     }
-
-    useEffect(() => {
-        fetchMovies();
-    }, []);
 
     return (
         <div className="movie-list-page">
@@ -35,7 +25,7 @@ const MovieList = () => {
                     ))
                 }
             </div>
-            <Pagination fetchMovies={fetchMovies} />
+            <Pagination />
         </div>
     )
 }
