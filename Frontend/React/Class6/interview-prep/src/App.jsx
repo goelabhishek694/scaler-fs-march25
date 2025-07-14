@@ -1,6 +1,7 @@
 import './App.css'
 import Welcome from './Components/Welcome'
 import Counter from './Components/Counter'
+import TodoList from './Components/TodoList'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <Welcome name="Arunava"/>
       <Counter/>
+      <TodoList/>
     </>
   )
 }
