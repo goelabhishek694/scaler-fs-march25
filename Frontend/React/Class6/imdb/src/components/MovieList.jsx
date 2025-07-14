@@ -17,7 +17,7 @@ const MovieList = () => {
 
     return (
         <div className="movie-list-page">
-            <h2>Movies</h2>
+            <h1 className="text-center font-bold">Movies</h1>
             <div className="movie-list">
                 {
                     movies.map(movie => (
