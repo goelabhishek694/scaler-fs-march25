@@ -1,6 +1,6 @@
 const userModel = require("../models/userModel");
 
-const registerUser = (req, res) => {
+const registerUser = async (req, res) => {
 
 }
 
