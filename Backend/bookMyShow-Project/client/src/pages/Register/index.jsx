@@ -1,13 +1,26 @@
 import React from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, message } from 'antd';
 import { Link } from "react-router-dom";
+import { RegisterUser } from '../../api/users';
 
 const Register = () => {
+  const onFinish = async(value) => {
+    try{
+      const response = await RegisterUser(value);
+      if(response.success){
+        message.success(response.message);
+      }else{
+        message.error(response.message);
+      }
+    }catch(err){
+      message.error(err.message);
+    }
+  }
   return (
     <main className="App-header">
           <h1>Register to BookMyShow</h1>
           <section className="mw-500 text-center px-3">
-            <Form layout="vertical">
+            <Form layout="vertical" onFinish={onFinish}>
               <Form.Item
                 label="Name"
                 name="name"
@@ -47,7 +60,7 @@ const Register = () => {
                   htmlType="submit"
                   style={{ fontSize: "1rem", fontWeight: "600" }}
                 >
-                  Login
+                  Register
                 </Button>
               </Form.Item>
             </Form>
