@@ -1,14 +1,17 @@
 import React from "react";
 import { Button, Form, Input, message } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginUser } from "../../api/users";
-
 function Login() {
+  const navigate = useNavigate();
   const onFinish = async(value) => {
     try{
       const response = await LoginUser(value);
       if(response.success){
         message.success(response.message);
+        console.log(response.message)
+        localStorage.setItem("token", response.data);
+        navigate("/");
       }else{
         message.error(response.message);
       }

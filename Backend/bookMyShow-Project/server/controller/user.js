@@ -1,8 +1,8 @@
 const User = require("../models/userModel");
-
+var jwt = require('jsonwebtoken');
 exports.registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { email } = req.body;
     //if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
@@ -11,7 +11,7 @@ exports.registerUser = async (req, res) => {
         success: false,
       });
     }
-    const newUser = new User({ name, email, password });
+    const newUser = new User(req.body);
     await newUser.save();
 
     return res.json({
@@ -46,9 +46,13 @@ exports.loginUser = async (req, res) => {
         success: false,
       });
     }
+    const token = jwt.sign({userId:user["_id"], "name":"Arunava"}, process.env.JWT_SECRET, {expiresIn: "1d"});
+    console.log("JWT from login", token);
+    res.cookie("token", token, {httpOnly: true, maxAge: 24*60*60*1000});
     res.send({
         message: "You've successfully logged in!",
         success: true,
+        // data: token
     });
 
   } catch (err) {

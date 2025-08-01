@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    confirmPassword: {
+        type: String,
+        required: true
+    },
     isAdmin: {
         type: Boolean,
         default: false
@@ -25,5 +29,22 @@ const userSchema = new mongoose.Schema({
     }
 }, {timestamps: true});
 
+userSchema.pre("save", function(next){
+    console.log("hello from pre");
+    this.confirmPassword = undefined;
+    next();
+})
+
+// userSchema.pre("save", function(next){
+//     console.log("hello from pre");
+//     const date = new Date();
+//     this.updatedAt = date;
+//     if(!this.createdAt){
+//         this.createdAt = date;
+//     }
+//     next();
+// })
+
 const userModel = mongoose.model("users", userSchema);
+
 module.exports = userModel;

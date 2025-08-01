@@ -52,6 +52,15 @@ const Register = () => {
               >
                 <Input type="password" placeholder="Enter your Password" />
               </Form.Item>
+
+              <Form.Item
+                label="Confirm Password"
+                name="confirmPassword"
+                className="d-block"
+                rules={[{ required: true, message: "Confirm Password is required" }]}
+              >
+                <Input type="password" placeholder="Re-enter your Password" />
+              </Form.Item>
     
               <Form.Item className="d-block">
                 <Button
