@@ -46,7 +46,7 @@ exports.loginUser = async (req, res) => {
         success: false,
       });
     }
-    const token = jwt.sign({userId:user["_id"], "name":"Arunava"}, process.env.JWT_SECRET, {expiresIn: "1d"});
+    const token = jwt.sign({userId:user["_id"]}, process.env.JWT_SECRET, {expiresIn: "1d"});
     console.log("JWT from login", token);
     res.cookie("token", token, {httpOnly: true, maxAge: 24*60*60*1000});
     res.send({
@@ -63,3 +63,8 @@ exports.loginUser = async (req, res) => {
     });
   }
 };
+
+exports.currentUser = async (req, res) => {
+
+//match jwts
+}

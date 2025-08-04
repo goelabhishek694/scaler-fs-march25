@@ -1,5 +1,5 @@
 const express = require("express");
-const cookierParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 require("dotenv").config(); //load .env variables into process.env object
@@ -9,10 +9,8 @@ const userRouter = require("./routes/userRoute");
 
 connectDB();
 
-app.use(cookierParser());
+app.use(cookieParser());
 app.use(express.json());
-
-
 
 app.use("/api/users", userRouter);
 
