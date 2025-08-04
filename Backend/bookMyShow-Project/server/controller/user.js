@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 exports.registerUser = async (req, res) => {
   try {
     const { email } = req.body;
@@ -48,6 +48,7 @@ exports.loginUser = async (req, res) => {
     }
     const token = jwt.sign({userId:user["_id"]}, process.env.JWT_SECRET, {expiresIn: "1d"});
     console.log("JWT from login", token);
+    localStorage.setItem("token", token);
     res.cookie("token", token, {httpOnly: true, maxAge: 24*60*60*1000});
     res.send({
         message: "You've successfully logged in!",
@@ -65,6 +66,19 @@ exports.loginUser = async (req, res) => {
 };
 
 exports.currentUser = async (req, res) => {
-
-//match jwts
+  try{
+    const userId = req.userId;
+    const user = await User.findById(userId).select("-password");
+    res.json({
+      success: true,
+      message: 'You are authorised to go to the protected route',
+      data: user
+    })
+  }catch(err){
+    console.log(err);
+    res.status(500).json({
+      message: err.message,
+      success: false,
+    });
+  }
 }
