@@ -48,12 +48,11 @@ exports.loginUser = async (req, res) => {
     }
     const token = jwt.sign({userId:user["_id"]}, process.env.JWT_SECRET, {expiresIn: "1d"});
     console.log("JWT from login", token);
-    localStorage.setItem("token", token);
     res.cookie("token", token, {httpOnly: true, maxAge: 24*60*60*1000});
     res.send({
         message: "You've successfully logged in!",
         success: true,
-        // data: token
+        data: token
     });
 
   } catch (err) {
