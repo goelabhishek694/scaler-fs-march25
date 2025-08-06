@@ -1,0 +1,70 @@
+const Movies = require("../models/movieModel");
+
+exports.addMovie = async (req, res) => {
+  try {
+    //create a new movie document using movie model 
+    const newMovie = new Movies(req.body);
+    //save the movie document 
+    await newMovie.save();
+    // send a response with success and message key
+    res.status(201).json({
+        "success": true,
+        "message": "New movie added"
+    })
+  } catch (err) {
+    res.send({
+      success: false,
+      message: err.message,
+    });
+  }
+};
+
+exports.getAllMovies = async (req, res) => {
+  try {
+    const movies = await Movies.find();
+    res.status(201).json({
+        "success": true,
+        "message": "all movies fetched",
+        data: movies
+    })
+  } catch (err) {
+    res.send({
+      success: false,
+      message: err.message,
+    });
+  }
+};
+
+exports.updateMovie = async (req, res) => {
+  try {
+    const {movieId}= req.body;
+    await Movies.findByIdAndUpdate(movieId, req.body);
+    // send a response with success and message key
+    res.status(201).json({
+        "success": true,
+        "message": "movie updated"
+    })
+  } catch (err) {
+    res.send({
+      success: false,
+      message: err.message,
+    });
+  }
+};
+
+exports.deleteMovie = async (req, res) => {
+  try {
+    const {movieId}= req.body;
+    await Movies.findByIdAndDelete(movieId)
+    // send a response with success and message key
+    res.status(201).json({
+        "success": true,
+        "message": "New movie added"
+    })
+  } catch (err) {
+    res.send({
+      success: false,
+      message: err.message,
+    });
+  }
+};
