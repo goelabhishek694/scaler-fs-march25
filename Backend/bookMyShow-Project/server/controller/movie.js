@@ -37,10 +37,10 @@ exports.getAllMovies = async (req, res) => {
 
 exports.updateMovie = async (req, res) => {
   try {
-    const {movieId}= req.body;
-    await Movies.findByIdAndUpdate(movieId, req.body);
+    const {id}= req.params;
+    await Movies.findByIdAndUpdate(id, req.body);
     // send a response with success and message key
-    res.status(201).json({
+    res.status(200).json({
         "success": true,
         "message": "movie updated"
     })
@@ -54,12 +54,12 @@ exports.updateMovie = async (req, res) => {
 
 exports.deleteMovie = async (req, res) => {
   try {
-    const {movieId}= req.body;
-    await Movies.findByIdAndDelete(movieId)
+    const {id}= req.params;
+    await Movies.findByIdAndDelete(id)
     // send a response with success and message key
-    res.status(201).json({
+    res.status(200).json({
         "success": true,
-        "message": "New movie added"
+        "message": "movie deleted"
     })
   } catch (err) {
     res.json({

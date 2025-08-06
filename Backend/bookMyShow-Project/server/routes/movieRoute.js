@@ -9,10 +9,10 @@ router.post("/", addMovie);
 router.get("/", getAllMovies);
 
 //update a movie
-router.put("/", updateMovie);
+router.put("/:id", updateMovie);
 
 //delete a movie
-router.delete("/", deleteMovie);
+router.delete("/:id", deleteMovie);
 
 module.exports = router;
 
