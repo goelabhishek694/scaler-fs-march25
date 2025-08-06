@@ -12,7 +12,7 @@ exports.addMovie = async (req, res) => {
         "message": "New movie added"
     })
   } catch (err) {
-    res.send({
+    res.json({
       success: false,
       message: err.message,
     });
@@ -28,7 +28,7 @@ exports.getAllMovies = async (req, res) => {
         data: movies
     })
   } catch (err) {
-    res.send({
+    res.json({
       success: false,
       message: err.message,
     });
@@ -45,7 +45,7 @@ exports.updateMovie = async (req, res) => {
         "message": "movie updated"
     })
   } catch (err) {
-    res.send({
+    res.json({
       success: false,
       message: err.message,
     });
@@ -62,7 +62,7 @@ exports.deleteMovie = async (req, res) => {
         "message": "New movie added"
     })
   } catch (err) {
-    res.send({
+    res.json({
       success: false,
       message: err.message,
     });
