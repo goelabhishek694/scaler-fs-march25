@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ProtectedRoute from './Components/ProtectedRoute';
 import Admin from './pages/Admin';
+import User from "./pages/User"
+import Partner from './pages/Partner';
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}/>
+        <Route path='/profile' element={<ProtectedRoute><User/></ProtectedRoute>}/>
+        <Route path='/partner' element={<ProtectedRoute><Partner/></ProtectedRoute>}/>
       </Routes>
       </BrowserRouter>
     </div>
