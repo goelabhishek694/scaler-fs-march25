@@ -10,33 +10,36 @@ export const GetAllMovies = async () => {
 };
 
 // Add a movie
-export const addMovie = async (value) => {
+export const AddMovie = async (value) => {
  try {
    const response = await axiosInstance.post("api/movies", value);
-   return response.data?.data
+   console.log(response);
+   return response.data
  } catch (error) {
    console.error(error);
  }
 };
 
-export const updateMovie = async (movieId) => {
+export const UpdateMovie = async (value, movieId) => {
  try {
    const response = await axiosInstance.put(
-     `/api/movies/${movieId}`,
+     `/api/movies/${movieId}`, value
    );
-   return response.data?.data
+   console.log(response);
+   
+   return response.data
  } catch (err) {
    return err.message;
  }
 };
 
 // Delete a movie
-export const deleteMovie = async (movieId) => {
+export const DeleteMovie = async (movieId) => {
  try {
-   const response = await axiosInstance.put(
+   const response = await axiosInstance.delete(
      `/api/movies/${movieId}`
    );
-   return response.data?.data
+   return response.data
  } catch (err) {
    return err.message;
  }

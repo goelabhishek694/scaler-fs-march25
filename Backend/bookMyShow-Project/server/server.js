@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/users", userRouter);
-app.use("/api/movie", movieRouter);
+app.use("/api/movies", movieRouter);
 
 //404 route, always keep at last
 app.use((req, res, next) => {

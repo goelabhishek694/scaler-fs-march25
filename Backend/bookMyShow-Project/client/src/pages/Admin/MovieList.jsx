@@ -83,7 +83,7 @@ function MovieList() {
            <Button
              onClick={() => {
                // set isDeleteModalOpen to true
-               isDeleteModalOpen(true)
+               setIsDeleteModalOpen(true)
                // set selected movie
                setSelectedMovie(data)
              }}
