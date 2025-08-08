@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { addMovie, getAllMovies, updateMovie, deleteMovie } = require("../controller/movie");
-const authMiddleware = require("../middleware/auth");
 
 //add a movie
 router.post("/", addMovie);
