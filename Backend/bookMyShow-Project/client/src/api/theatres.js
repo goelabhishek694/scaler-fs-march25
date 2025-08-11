@@ -10,7 +10,7 @@ export const GetAllTheatres = async () => {
 };
 
 //get theatre by owner 
-export const getAllTheatres = async (ownerId) => {
+export const GetAllTheatresOfPartner = async (ownerId) => {
  try {
    const response = await axiosInstance.get(
      `/api/theatres/owner/${ownerId}`
@@ -46,7 +46,7 @@ export const UpdateTheatre = async (value, theatreId) => {
 };
 
 // Delete a theatre
-export const DeletetTheatre = async (theatreId) => {
+export const DeleteTheatre = async (theatreId) => {
  try {
    const response = await axiosInstance.delete(
      `/api/theatres/${theatreId}`

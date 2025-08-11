@@ -23,7 +23,8 @@ const theatreSchema = new mongoose.Schema({
     },
     isActive: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     }
 }, {timestamps: true});
 
