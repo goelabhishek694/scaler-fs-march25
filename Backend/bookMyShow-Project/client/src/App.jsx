@@ -7,6 +7,7 @@ import ProtectedRoute from './Components/ProtectedRoute';
 import Admin from './pages/Admin';
 import User from "./pages/User"
 import Partner from './pages/Partner';
+import StripeIntegration from './Components/StripeIntegration';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}/>
         <Route path='/profile' element={<ProtectedRoute><User/></ProtectedRoute>}/>
         <Route path='/partner' element={<ProtectedRoute><Partner/></ProtectedRoute>}/>
+        <Route path='/payment' element={<StripeIntegration/>}/>
       </Routes>
       </BrowserRouter>
     </div>

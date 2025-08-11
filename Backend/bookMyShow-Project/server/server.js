@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 const userRouter = require("./routes/userRoute");
 const movieRouter = require("./routes/movieRoute");
 const theatreRouter = require("./routes/theatreRoute");
+const bookingRouter = require("./routes/bookingRoute");
 
 connectDB();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/movies", movieRouter);
 app.use("/api/theatres", theatreRouter);
+app.use("/api/booking", bookingRouter);
 
 //404 route, always keep at last
 app.use((req, res, next) => {
