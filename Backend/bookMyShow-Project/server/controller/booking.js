@@ -1,6 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Use your secret key here
 
-export const makePayment = async (req, res) => {
+exports.makePayment = async (req, res) => {
  try {
    const { token, amount } = req.body;
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, message } from "antd";
 import TheatreFormModal from "./TheatreFormModal";
 import DeleteTheatreModal from "./DeleteTheatreModal";
+import ShowModal from "./ShowModal";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { GetAllTheatresOfPartner } from "../../api/theatres";
 import { useSelector, useDispatch } from "react-redux";

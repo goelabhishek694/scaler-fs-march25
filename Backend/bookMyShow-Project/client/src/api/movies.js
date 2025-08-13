@@ -3,7 +3,7 @@ import { axiosInstance } from "./index";
 export const GetAllMovies = async () => {
  try {
    const response = await axiosInstance.get("api/movies");
-   return response.data?.data;
+   return response.data;
  } catch (error) {
    console.error(error);
  }
