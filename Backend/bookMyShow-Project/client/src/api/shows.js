@@ -21,6 +21,8 @@ export const DeleteShow = async (showId) => {
 
 export const UpdateShow = async (value, showId) => {
   try {
+    console.log("i am caled");
+    
     const response = await axiosInstance.put(`/api/shows/${showId}`, value);
     console.log(response);
     return response.data;

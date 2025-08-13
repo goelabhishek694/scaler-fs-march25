@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {addShow, deleteShow, updateShow, getTheatreAndShowsByMovieAndDate, showsByTheatre, showsById } = require("../controller/theatre");
+const {addShow, deleteShow, updateShow, getTheatreAndShowsByMovieAndDate, showsByTheatre, showById } = require("../controller/show");
 
 //add show
 router.post("/", addShow);
@@ -18,3 +18,5 @@ router.get("/:theatreId", showsByTheatre)
 
 //get shows by id 
 router.get("/:showId", showById);
+
+module.exports = router;
