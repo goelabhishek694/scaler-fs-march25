@@ -68,3 +68,21 @@ exports.deleteMovie = async (req, res) => {
     });
   }
 };
+
+exports.getMovieById = async (req, res) => {
+  try {
+    const {movieId}= req.params;
+    const movie = await Movies.findById(movieId)
+    // send a response with success and message key
+    res.status(200).json({
+        "success": true,
+        "message": "movie fetched",
+        data: movie
+    })
+  } catch (err) {
+    res.json({
+      success: false,
+      message: err.message,
+    });
+  }
+};

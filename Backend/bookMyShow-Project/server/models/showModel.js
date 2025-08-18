@@ -1,4 +1,3 @@
-const { HostAddress } = require("mongodb");
 const mongoose = require("mongoose");
 
 const showSchema = new mongoose.Schema({
@@ -16,7 +15,7 @@ const showSchema = new mongoose.Schema({
     },
     movie: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "movies"
+        ref: "movie"
     },
     ticketPrice: {
         type: Number,
@@ -32,7 +31,7 @@ const showSchema = new mongoose.Schema({
     },
     theatre:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "theatres"
+        ref: "theatre"
     }
 }, {timestamps: true});
 

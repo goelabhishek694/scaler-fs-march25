@@ -58,6 +58,8 @@ exports.getTheatreAndShowsByMovieAndDate = async (req, res) => {
     //2. make query to Show collection to fetch all shows for thegiven movie and date
     //3. to get theatre information for each show
     const shows = await Show.find({ movie, date }).populate("theatre");
+    console.log(shows);
+    
     //4. initilaize an empty list to keep track of unique theatres
     let uniqueTheatres = [];
     //5. iterate throught each show in shows

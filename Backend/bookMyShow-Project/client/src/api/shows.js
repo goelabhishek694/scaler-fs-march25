@@ -32,9 +32,9 @@ export const UpdateShow = async (value, showId) => {
 };
 
 //get all theatres by movie and date which has some shows
-export const GetTheatreAndShowsByMovieAndDate = async (value, movie, date) => {
+export const GetTheatreAndShowsByMovieAndDate = async (movie, date) => {
   try {
-    const response = await axiosInstance.put(`/api/shows/by-movie-date/${movie}/${date}`, value);
+    const response = await axiosInstance.get(`/api/shows/by-movie-date/${movie}/${date}`);
     console.log(response);
     return response.data;
   } catch (err) {
@@ -45,7 +45,7 @@ export const GetTheatreAndShowsByMovieAndDate = async (value, movie, date) => {
 //get all shows by theatre
 export const ShowsByTheatre = async (theatreId) => {
   try {
-    const response = await axiosInstance.put(`/api/shows/${theatreId}`);
+    const response = await axiosInstance.get(`/api/shows/${theatreId}`);
     console.log(response);
     return response.data;
   } catch (err) {
@@ -55,7 +55,7 @@ export const ShowsByTheatre = async (theatreId) => {
 
 export const ShowById = async (showId) => {
   try {
-    const response = await axiosInstance.put(`/api/shows/${showId}`);
+    const response = await axiosInstance.get(`/api/shows/${showId}`);
     console.log(response);
     return response.data;
   } catch (err) {

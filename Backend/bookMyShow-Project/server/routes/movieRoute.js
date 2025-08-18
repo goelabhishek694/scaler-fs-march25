@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { addMovie, getAllMovies, updateMovie, deleteMovie } = require("../controller/movie");
+const { addMovie, getAllMovies, updateMovie, deleteMovie, getMovieById } = require("../controller/movie");
 
 //add a movie
 router.post("/", addMovie);
@@ -12,6 +12,9 @@ router.put("/:id", updateMovie);
 
 //delete a movie
 router.delete("/:id", deleteMovie);
+
+//get movie by id 
+router.get("/:movieId", getMovieById)
 
 module.exports = router;
 

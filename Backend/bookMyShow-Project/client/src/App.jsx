@@ -8,6 +8,7 @@ import Admin from './pages/Admin';
 import User from "./pages/User"
 import Partner from './pages/Partner';
 import StripeIntegration from './Components/StripeIntegration';
+import SingleMovie from './SingleMovie';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/profile' element={<ProtectedRoute><User/></ProtectedRoute>}/>
         <Route path='/partner' element={<ProtectedRoute><Partner/></ProtectedRoute>}/>
         <Route path='/payment' element={<StripeIntegration/>}/>
+        <Route path='/movie/:id' element={<ProtectedRoute><SingleMovie/></ProtectedRoute>}/>
       </Routes>
       </BrowserRouter>
     </div>

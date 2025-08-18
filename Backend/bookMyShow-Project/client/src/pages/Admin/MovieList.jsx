@@ -100,8 +100,10 @@ function MovieList() {
    dispatch(showLoading());
    // call axios instance function to get all movies
    const allMovies = await GetAllMovies();
+   console.log(allMovies);
+   
    // update the movie state with the response
-   setMovies(allMovies.map(movie => ({...movie, key:`movie${movie._id}`})));
+   setMovies(allMovies.data?.map(movie => ({...movie, key:`movie${movie._id}`})));
    dispatch(hideLoading());
  };
 
