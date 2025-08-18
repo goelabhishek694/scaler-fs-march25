@@ -1,8 +1,11 @@
 import React from 'react'
+import Bookings from './Bookings'
 
 function User() {
   return (
-    <div>User Page</div>
+    <div>Profile
+      <Bookings/>
+    </div>
   )
 }
 

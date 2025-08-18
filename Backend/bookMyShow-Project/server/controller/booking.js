@@ -6,7 +6,8 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Use your sec
 exports.makePayment = async (req, res) => {
  try {
    const { token, amount } = req.body;
-
+   console.log(amount);
+   
    // Step 1: Create a Stripe customer using the token
    const customer = await stripe.customers.create({
      email: token.email,
@@ -16,7 +17,7 @@ exports.makePayment = async (req, res) => {
    // Step 2: Create a PaymentIntent
    const paymentIntent = await stripe.paymentIntents.create({
      amount: amount, // Amount is in cents
-     currency: "usd",
+     currency: "INR",
      customer: customer.id,
      payment_method_types: ["card"],
      receipt_email: token.email,

@@ -1,13 +1,10 @@
 import { axiosInstance } from ".";
 
 
-export const MakePayment = async (token, amount) => {
- try {
-   const response = await axiosInstance.post("/api/bookings/make-payment", {
-     token,
-     amount,
-   });
-   // console.log(token, amount, response);
+export const MakePayment = async (value) => {
+ try {  
+   const response = await axiosInstance.post("/api/booking/make-payment", value);
+   console.log(response);
    return response.data;
  } catch (err) {
    return err.response;
@@ -18,7 +15,7 @@ export const MakePayment = async (token, amount) => {
 export const bookShow = async (payload) => {
  try {
    const response = await axiosInstance.post(
-     "/api/bookings/book-show",
+     "/api/booking/book-show",
      payload
    );
    console.log(response.data);
@@ -32,7 +29,7 @@ export const bookShow = async (payload) => {
 export const GetAllBookings = async (payload) => {
  try {
    const response = await axiosInstance.get(
-     `/api/bookings/${payload.userId}`
+     `/api/booking/${payload.userId}`
    );
    return response.data;
  } catch (err) {

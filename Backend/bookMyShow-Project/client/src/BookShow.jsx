@@ -12,7 +12,7 @@ function BookShow() {
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((store) => store.users);
+  const { user } = useSelector((state) => state.users);
   const [show, setShow] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const getData = async () => {
