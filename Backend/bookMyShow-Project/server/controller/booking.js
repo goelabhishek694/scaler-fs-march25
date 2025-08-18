@@ -1,3 +1,6 @@
+const Booking = require('../models/bookingModel');
+const Show = require('../models/showModel');
+
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Use your secret key here
 
 exports.makePayment = async (req, res) => {
@@ -17,7 +20,7 @@ exports.makePayment = async (req, res) => {
      customer: customer.id,
      payment_method_types: ["card"],
      receipt_email: token.email,
-     description: "Booking movie tickets",
+     description: "Token has been assigned to the movie!",
    });
 
    const transactionId = paymentIntent.id;
@@ -33,4 +36,59 @@ exports.makePayment = async (req, res) => {
      message: err.message,
    });
  }
+}
+
+exports.bookShow = async (req, res) => {
+  try{
+    const newBooking = new Booking(req.body);
+    await newBooking.save();
+
+    const show = await Show.findById(req.body.show).populate("movie");
+    const updatedBookedSeats = [...show.bookedSeats, ...req.body.seats];
+    await Show.findByIdAndUpdate(req.body.show, {bookedSeats: updatedBookedSeats});
+
+    res.json({
+      success: true,
+      message: "New boking done !",
+      data: newBooking
+    })
+  }catch(err){
+    res.send({
+     success: false,
+     message: err.message,
+   });
+  }
+}
+
+exports.getAllBookings = async (req, res) => {
+  try{
+    const {userId} = req.params;
+    const allBookings = await Booking.find({user: userId})
+    .populate("user")
+    .populate({
+      path: "show",
+      populate: {
+        path: "movie",
+        model: "movie"
+      }
+    })
+    .populate({
+      path: "show",
+      populate: {
+        path: "theatre",
+        model: "theatre"
+      }
+    });
+
+    res.json({
+      success: true,
+      message: "bokings fetched !",
+      data: allBookings
+    })
+  }catch(err){
+    res.send({
+     success: false,
+     message: err.message,
+   });
+  }
 }

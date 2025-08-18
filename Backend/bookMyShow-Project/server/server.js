@@ -19,8 +19,8 @@ app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/movies", movieRouter);
 app.use("/api/theatres", theatreRouter);
-app.use("/api/booking", bookingRouter);
 app.use("/api/shows", showRouter);
+app.use("/api/booking", bookingRouter);
 
 //404 route, always keep at last
 app.use((req, res, next) => {

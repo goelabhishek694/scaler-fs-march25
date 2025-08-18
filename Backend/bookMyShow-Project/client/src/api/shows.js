@@ -55,7 +55,7 @@ export const ShowsByTheatre = async (theatreId) => {
 
 export const ShowById = async (showId) => {
   try {
-    const response = await axiosInstance.get(`/api/shows/${showId}`);
+    const response = await axiosInstance.get(`/api/shows/show/${showId}`);
     console.log(response);
     return response.data;
   } catch (err) {

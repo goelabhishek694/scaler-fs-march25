@@ -29,7 +29,9 @@ const Home = () => {
     }
   }
 
-  useEffect(() => getData(), []);
+  useEffect(() => {
+    getData();
+  }, []);
 
 const handleSearch = () => {
 

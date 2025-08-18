@@ -17,6 +17,6 @@ router.get("/by-movie-date/:movie/:date", getTheatreAndShowsByMovieAndDate);
 router.get("/:theatreId", showsByTheatre)
 
 //get shows by id 
-router.get("/:showId", showById);
+router.get("/show/:showId", showById);
 
 module.exports = router;
