@@ -81,3 +81,19 @@ exports.currentUser = async (req, res) => {
     });
   }
 }
+
+exports.forgetPassword = async (req, res) => {
+  try{
+
+  }catch(err){
+
+  }
+}
+
+exports.resetPassword = async (req, res) => {
+  try{
+
+  }catch(err){
+    
+  }
+}
