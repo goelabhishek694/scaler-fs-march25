@@ -121,7 +121,7 @@ exports.resetPassword = async (req, res) => {
     const {otp, password} = req.body;
     const {email} = req.params;
     //if otp is valid
-    const user = await User.find({email, otp});
+    const user = await User.findOne({email, otp});
     if (!user) {
       res.status(404).json({
         message: "User not registered",

@@ -19,7 +19,7 @@ async function emailHelper(templateName, receiverEmail, data){
 
         const templatePath = path.join(__dirname, "email_templates", templateName);
         let content = await fs.promises.readFile(templatePath, "utf-8");
-        console.log(content);
+        // console.log(content);
         content = replaceContent(content, data)
         const emailDetails ={
             from: '"Abhishek" <onboarding@resend.dev>',
