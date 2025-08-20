@@ -15,7 +15,6 @@ const userSchema = new mongoose.Schema({
     },
     confirmPassword: {
         type: String,
-        required: true
     },
     isAdmin: {
         type: Boolean,
@@ -26,12 +25,20 @@ const userSchema = new mongoose.Schema({
         enum: ["admin", "user", "partner"],
         required: true,
         default: "user"
+    },
+    otp: {
+        type: String
+    },
+    otpExpiry: {
+        type: Date
     }
 }, {timestamps: true});
 
 userSchema.pre("save", function(next){
     console.log("hello from pre");
+    if(this.confirmPassword){
     this.confirmPassword = undefined;
+    }
     next();
 })
 

@@ -10,6 +10,8 @@ import Partner from './pages/Partner';
 import StripeIntegration from './Components/StripeIntegration';
 import SingleMovie from './SingleMovie';
 import BookShow from './BookShow';
+import Forget from './pages/Forget';
+import Reset from './pages/Reset';
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
         <Route path='/payment' element={<StripeIntegration/>}/>
         <Route path='/movie/:id' element={<ProtectedRoute><SingleMovie/></ProtectedRoute>}/>
         <Route path='/book-show/:id' element={<ProtectedRoute><BookShow/></ProtectedRoute>}/>
+        <Route path="/forget" element= {<Forget/>}/>
+        <Route path="/reset/:email" element= {<Reset/>}/>
       </Routes>
       </BrowserRouter>
     </div>
