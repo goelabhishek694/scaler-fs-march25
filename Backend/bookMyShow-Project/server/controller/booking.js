@@ -47,6 +47,7 @@ exports.bookShow = async (req, res) => {
     const show = await Show.findById(req.body.show).populate("movie");
     const updatedBookedSeats = [...show.bookedSeats, ...req.body.seats];
     await Show.findByIdAndUpdate(req.body.show, {bookedSeats: updatedBookedSeats});
+    
 
     res.json({
       success: true,
