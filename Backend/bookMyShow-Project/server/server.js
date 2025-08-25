@@ -1,5 +1,6 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const rateLimit = require("express-rate-limit");
 const app = express();
 
 require("dotenv").config(); //load .env variables into process.env object
@@ -12,7 +13,12 @@ const bookingRouter = require("./routes/bookingRoute");
 const showRouter = require("./routes/showRoute");
 
 connectDB();
-
+const apiLimiter = rateLimit({
+    windowMs: 15*60*1000,
+    max: 100,
+    message: "Too many requests from this IP, plsease try again after 15 minutes."
+});
+app.use("/api",apiLimiter);
 app.use(cookieParser());
 app.use(express.json());
 
