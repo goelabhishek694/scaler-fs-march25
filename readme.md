@@ -12,3 +12,6 @@ https://portswigger.net/web-security/nosql-injection#:~:text=NoSQL%20operator%20
 27/8/25
 https://github.com/sindresorhus/awesome-nodejs
 https://github.com/enaqx/awesome-react
+
+29/08/2025
+https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/
