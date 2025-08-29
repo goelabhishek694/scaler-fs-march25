@@ -2,9 +2,9 @@ const { log, error } = require("console");
 const fs = require("fs");
 const path = require("path");
 // const content = Math.random().toString(36).repeat(10000000);
-// fs.writeFileSync("./big.file", content);
+// fs.writeFileSync("./bigs.file", content);
 
-const filePath = path.join(__dirname, 'big.file');
+const filePath = path.join(__dirname, 'bigs.file');
 console.log(filePath);
 //streams in nodejs inherently use event emitter class
 // const readableStream = fs.createReadStream(filePath);
